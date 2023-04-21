@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+long long int exp(int n);
+
+int main(){
+  int N;
+  cin >> N;
+  cout << exp(N);
+}
+
+long long int exp(int n){
+  if (n == 0){
+    return 1;
+  }
+  if (n == 1){
+    return 2;
+  }
+  return 2 * exp(n-1);
+}
