@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void helper(vector <int> sub, int ind){
+  if (ind == sub.size()){
+    for (int i = 0; i < sub.size(); i++){
+      cout<<sub[i]<<" ";
+    }
+    cout<<endl;
+    return;
+  }
+
+  for (int i = ind; i<sub.size(); i++){
+    swap(sub[ind], sub[i]);
+    helper(sub, ind+1);
+    swap(sub[ind], sub[i]);
+  }
+
+  return;
+}
+
+int main(){
+  vector <int> arr;
+  int n;
+
+  for (int i = 0; i < 3; i++){
+    cin>>n;
+    arr.push_back(n);
+  }
+  
+
+  helper(arr, 0);
+}
+
