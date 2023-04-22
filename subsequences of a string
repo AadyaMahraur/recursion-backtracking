@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+void helper(string s, string t, int ind){
+  if (ind == s.size()){
+    cout<<t<<" ";
+    return;
+  }
+
+  //take
+  helper(s, t+s[ind], ind+1);
+  
+  //not take
+  helper(s, t, ind+1);
+
+  return;
+}
+
+int main(){
+  string s;
+  cin >> s;
+
+  helper(s, "", 0);
+}
