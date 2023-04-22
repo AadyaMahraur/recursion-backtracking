@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector <string> keys = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+void helper(vector <int> arr, string temp, int ind){
+  if (ind == arr.size()){
+    cout<<temp<<endl;
+    return;
+  }
+
+  for (int i = 0; i<keys[arr[ind]].size(); i++){
+    helper(arr, temp+keys[arr[ind]][i], ind+1);
+  }
+
+  return;
+}
+
+int main(){
+  vector <int> arr;
+  int n;
+
+  for (int i = 0; i < 3; i++){
+    cin>>n;
+    arr.push_back(n);
+  }
+  
+  helper(arr, "", 0);
+}
+
