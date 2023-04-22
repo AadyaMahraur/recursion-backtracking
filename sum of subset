@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+const int N = 9;
+
+int helper(vector <int> arr, int cur_sum, int ind){
+  //cout<<cur_sum<<endl;
+  if (cur_sum > N){
+    return 0;
+  }
+
+  if (cur_sum == N){
+    return 1;
+  }
+
+  if (ind == arr.size()){
+    return 0;
+  }
+
+  //take
+  return helper(arr, cur_sum+arr[ind], ind+1) || helper(arr, cur_sum, ind+1);
+
+  
+}
+
+int main(){
+  vector <int> arr;
+  int n;
+
+  for (int i = 0; i < 4; i++){
+    cin>>n;
+    arr.push_back(n);
+  }
+  
+
+  cout<<helper(arr, 0, 0);
+}
