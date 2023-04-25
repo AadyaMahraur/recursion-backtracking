@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int target = 7;
+
+vector <vector <int>> ans;
+
+void helper(vector <int> arr, vector <int> temp, int curSum, int ind){
+  if (curSum == target){
+    ans.push_back(temp);
+    return;
+  }
+
+  if (curSum>target){
+    return;
+  }
+
+  if (ind == arr.size()){
+    
+    return;
+  }
+
+  //take
+  curSum += arr[ind];
+  temp.push_back(arr[ind]);
+  helper(arr, temp, curSum, ind);
+
+  //not take
+  curSum -= arr[ind];
+  temp.pop_back();
+  helper(arr, temp, curSum, ind+1);
+
+  return;
+}
+
+int main(){
+  vector <int> arr = {2,3,7};
+  helper(arr, {}, 0, 0);
+}
+
